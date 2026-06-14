@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Lists all states starting with N from the database hbtn_0e_0_usa."""
+"""Lists states whose name starts with N from the database hbtn_0e_0_usa."""
 import MySQLdb
 import sys
 
@@ -10,7 +10,8 @@ if __name__ == "__main__":
         port=3306,
         user=sys.argv[1],
         passwd=sys.argv[2],
-        db=sys.argv[3]
+        db=sys.argv[3],
+        charset="utf8"
     )
     cursor = conn.cursor()
     cursor.execute(
