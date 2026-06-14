@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Lists states matching a name given as argument using format."""
+"""Lists states matching a name given as argument using string format."""
 import MySQLdb
 import sys
 
@@ -14,11 +14,8 @@ if __name__ == "__main__":
         charset="utf8"
     )
     cursor = conn.cursor()
-    cursor.execute(
-        "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(
-            sys.argv[4]
-        )
-    )
+    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC"
+    cursor.execute(query.format(sys.argv[4]))
     for row in cursor.fetchall():
         print(row)
     cursor.close()
